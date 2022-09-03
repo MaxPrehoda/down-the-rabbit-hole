@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <div className="absolute top-0">
           <h1 className="mt-4">Down the Rabbit Hole 🐇</h1>
-          <p className="relative text-base max-h-[12px] overflow-none mt-1">
+          <p className="relative text-base max-h-[12px] overflow-none mt-1 pb-1">
             Made with{" "}
             <span role="img" aria-label="heart">
               ❤️
@@ -15,17 +15,25 @@ function App() {
             by <a href="https://maxprehoda.info/" className="portfolio-link">Maxwell Prehoda</a>
           </p>
         </div>
-        <p className="mb-8 text-2xl pt-24">
+        <div className="card bg-gray-800 rounded-md p-4 pt-6">
+        <p className="mb-8 text-2xl top-0">
           When browsing coding videos on Youtube I came across a tricky coding
           interview question:
         </p>
-        <p className="text-xl max-w-[75ch] mb-8">
+        <p className="text-xl mb-8 max-w-fit">
           There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
           one of the holes. You can only look in one hole at a time, and every
           time you look in a hole, the rabbit jumps to either adjacent hole.
         </p>
-        <p className="text-3xl mb-36">How can we find the rabbit on the first pass every time?</p>
+        </div>
+        <div className="card bg-gray-800 rounded-md -mt-6 pl-6 pr-6 mb-12">
+        <p className="text-3xl mb-6 mt-6">How can we find the rabbit on the first pass every time?</p>
+        </div>
         <Game />
+        <p className="text-xl max-w-[75ch] mt-8">
+          Try out both starting positions and a few different initial rabbit positions. Do you see a correlation between the rabbit's initial position and the first position we look in?
+        </p>
+        <Answer/>
       </header>
     </div>
   );
@@ -70,13 +78,13 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="flex flex-row justify-center gap-8">
-        <RabbitConfig className="pt-0 mt-0" parentCallback={this.rabbitConfigHandleCallback} />
-        <StartConfig className="pt-0 mt-0" parentCallback={this.startConfigHandleCallback} />
-                <StartStopButton
-          className="pt-0 mt-0"
+        <div className="flex flex-row justify-center"><span className="bg-gray-800 p-3 rounded-md flex gap-10">
+        <RabbitConfig className="pt- mt-0" parentCallback={this.rabbitConfigHandleCallback} />
+        <StartStopButton
+          className="pt- mt-0"
           parentCallback={this.startStopButtonHandleCallback}
         />
+        <StartConfig className="pt- mt-0" parentCallback={this.startConfigHandleCallback} /></span>
         </div>
         <div className="game-board mt-4 mb-4 pl-6 pr-6">
           <Board
@@ -195,6 +203,31 @@ class StartStopButton extends React.Component {
     return (
       <div className="mb-6 space-x-6" onClick={this.onTrigger}>
         <button type="button">▶️</button>
+      </div>
+    );
+  }
+}
+
+class Answer extends React.Component {
+  constructor(props) {
+    super(props);
+    //this.state = {    };
+    this.onChangeValue = this.onChangeValue.bind(this);
+  }
+
+  onChangeValue(event) {
+    this.props.parentCallback(event.target.value);
+  }
+
+  render() {
+    return (
+      <div className="pt-8">
+      <button className="absolute bg-indigo-600 rounded-md pl-3 pr-3 text-md -ml-28 z-10">Reveal Answer</button>
+      <div className="card bg-gray-800 rounded-md p-4 blur-xl">
+      <p className="text-xl max-w-full">
+        There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
+      </p>
+      </div>
       </div>
     );
   }
