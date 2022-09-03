@@ -53,9 +53,10 @@
   }
 }
 
-.portfolio-link:hover {
+.portfolio-link :hover {
   background-color: rgba(43, 43, 43, 0.705);
-  padding: 2px;
+  padding: 8px;
   border-radius: 6px;
   
 }
+
