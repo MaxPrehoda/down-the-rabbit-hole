@@ -1,5 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* GLOBAL SECTION CLASSES*/
+
 .App {
   text-align: center;
+}
+
+.App-logo {
+  height: 12vmin;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -9,7 +22,7 @@
 }
 
 .App-header {
-  background-color: #111317;
+  background-color: #0e121a;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,6 +30,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.square {
+  width: 75px;
+  height: 75px;
+  background-color: rgba(253, 253, 253, 0.986);
+  border-radius: 6px;
+  margin: 10px;
 }
 
 .App-link {
@@ -30,4 +51,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.portfolio-link:hover {
+  background-color: rgba(43, 43, 43, 0.705);
+  padding: 2px;
+  border-radius: 6px;
+  
 }
