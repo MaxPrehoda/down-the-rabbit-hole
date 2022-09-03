@@ -31,7 +31,7 @@ function App() {
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
-          Try out both starting positions and a few different initial rabbit positions. Do you see a correlation between the rabbit's initial position and the first position we look in?
+          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the rabbit's initial position and the first position we look in?
         </p>
         <Answer/>
       </header>
