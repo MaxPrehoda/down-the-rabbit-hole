@@ -31,7 +31,7 @@ function App() {
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
-          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the rabbit's initial position and the first position we look in?
+          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the rabbit being found and the indexes of both initial positions?
         </p>
         <Answer/>
       </header>
@@ -61,7 +61,7 @@ class Game extends React.Component {
       if (newRabbitPos === newStartPos) {
         clearInterval(interval);
       };
-      if (newRabbitPos > newRabbitPos) {
+      if (newStartPos > newRabbitPos) {
         clearInterval(interval);
       }
     }, 1000);
@@ -119,12 +119,16 @@ function Board(props) {
   let squares = Array(25)
     .fill(null)
     .map((val, idx) => {
+      if (idx === props.lookPos & idx > props.rabbitPos) return "👎";
+      if (idx === props.lookPos & idx === props.rabbitPos) return "🏁";
       if (idx === props.rabbitPos) return "🐰";
       if (idx === props.lookPos) return "🔍";
       return "🕳️";
     });
   if (props.rabbitPos === props.lookPos) {
     status = "You found the rabbit!";
+  } else if (props.lookPos > props.rabbitPos) {
+    status = "You didn't find the rabbit. It slipped by you!";
   } else {
     status = "You haven't found the rabbit yet...";
   }
