@@ -128,3 +128,7 @@ input[type="radio"]::before {
   /* Windows High Contrast Mode */
   background-color: #4f46e5;
 }
+
+.customText {
+  font-size: xx-large !important;
+}

@@ -233,7 +233,7 @@ class Answer extends React.Component {
 
   render() {
     let revealClass = this.state.clicked ? 'card bg-gray-900 rounded-md p-4' : 'card bg-gray-900 rounded-md p-4 blur-xl';
-    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10';
+    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText';
     return (
       <div className="pt-8 pl-12 pr-12">
       <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
