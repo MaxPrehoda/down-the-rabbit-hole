@@ -5,8 +5,13 @@
 
 /* GLOBAL SECTION CLASSES*/
 
+body {
+  background-color: #0e121a;
+}
+
 .App {
   text-align: center;
+  background-color: #0e121a;
 }
 
 .App-logo {
@@ -22,7 +27,7 @@
 }
 
 .App-header {
-  background-color: #0e121a;
+  background-color: #0e131b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -54,9 +59,72 @@
 }
 
 .portfolio-link :hover {
-  background-color: rgba(43, 43, 43, 0.705);
-  padding: 8px;
+  background-color: #4f46e5;
+  padding: 4px;
   border-radius: 6px;
   
 }
 
+input[type="radio"] {
+  /* ...existing styles */
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+}
+
+input[type="radio"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(+0.275em);
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"] {
+  /* ...existing styles */
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]::before {
+  /* ...existing styles */
+
+  /* Windows High Contrast Mode */
+  background-color: #4f46e5;
+}

@@ -17,10 +17,10 @@ function App() {
 </svg>
 
             </span>&nbsp;
-            by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; Maxwell Prehoda</a>
+            by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-gray-900 p-1 rounded-md">Maxwell Prehoda</span></a>
           </p>
         </div>
-        <div className="card bg-gray-800 rounded-md p-4 pt-6 mt-32 md:mt-28 lg:mt-12">
+        <div className="card bg-gray-900 rounded-md p-4 pt-6 ml-5 mr-5 mt-24 md:mt-28 lg:mt-12">
         <p className="mb-8 text-2xl top-0">
           When browsing coding videos on Youtube I came across a tricky coding
           interview question:
@@ -31,7 +31,7 @@ function App() {
           time you look in a hole, the rabbit jumps to either adjacent hole.
         </p>
         </div>
-        <div className="card bg-gray-800 rounded-md -mt-6 pl-6 pr-6 mb-12">
+        <div className="card bg-gray-900 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-5 mr-5">
         <p className="text-3xl mb-6 mt-6">How can we find the rabbit without knowing it's initial position?</p>
         </div>
         <Game />
@@ -83,7 +83,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="flex flex-row justify-center"><span className="bg-gray-800 p-3 rounded-md flex gap-10">
+        <div className="flex justify-center ml-4 mr-4"><span className="bg-gray-900 p-3 pt-8 rounded-md flex flex-col sm:flex-row gap-3 md:gap-10">
         <RabbitConfig className="pt- mt-0" parentCallback={this.rabbitConfigHandleCallback} />
         <StartStopButton
           className="pt- mt-0"
@@ -162,10 +162,10 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="mb-6 space-x-6" onChange={this.onChangeValue}>
+      <div className="space-x-5 flex gap-1" onChange={this.onChangeValue}>
         🔍 
-        <input className="ml-2" type="radio" value="0" name="startPos" />0
-        <input type="radio" value="1" name="startPos" />1
+        <input className="m" type="radio" value="0" name="startPos" />odd
+        <input type="radio" value="1" name="startPos"/>even
       </div>
     );
   }
@@ -232,7 +232,7 @@ class Answer extends React.Component {
   };
 
   render() {
-    let revealClass = this.state.clicked ? 'card bg-gray-800 rounded-md p-4' : 'card bg-gray-800 rounded-md p-4 blur-xl';
+    let revealClass = this.state.clicked ? 'card bg-gray-900 rounded-md p-4' : 'card bg-gray-900 rounded-md p-4 blur-xl';
     let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10';
     return (
       <div className="pt-8 pl-12 pr-12">
