@@ -20,7 +20,7 @@ function App() {
             by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; Maxwell Prehoda</a>
           </p>
         </div>
-        <div className="card bg-gray-800 rounded-md p-4 pt-6">
+        <div className="card bg-gray-800 rounded-md p-4 pt-6 mt-32 md:mt-28 lg:mt-12">
         <p className="mb-8 text-2xl top-0">
           When browsing coding videos on Youtube I came across a tricky coding
           interview question:
@@ -32,7 +32,7 @@ function App() {
         </p>
         </div>
         <div className="card bg-gray-800 rounded-md -mt-6 pl-6 pr-6 mb-12">
-        <p className="text-3xl mb-6 mt-6">How can we find the rabbit on the first pass through every time?</p>
+        <p className="text-3xl mb-6 mt-6">How can we find the rabbit without knowing it's initial position?</p>
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
