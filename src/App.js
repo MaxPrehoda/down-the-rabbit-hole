@@ -212,7 +212,7 @@ class StartStopButton extends React.Component {
     return (
       <div className="mb-6 space-x-6" onClick={this.onTrigger}>
         <button type="button" className="bg-indigo-500 rounded-md p-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
 </svg>
 </button>
       </div>
@@ -223,21 +223,26 @@ class StartStopButton extends React.Component {
 class Answer extends React.Component {
   constructor(props) {
     super(props);
-    //this.state = {    };
-    this.onChangeValue = this.onChangeValue.bind(this);
+    this.state = { clicked: false };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onChangeValue(event) {
-    this.props.parentCallback(event.target.value);
-  }
+  handleClick = () => {
+    this.setState({ clicked: true });
+  };
 
   render() {
+    let revealClass = this.state.clicked ? 'card bg-gray-800 rounded-md p-4' : 'card bg-gray-800 rounded-md p-4 blur-xl';
+    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10';
     return (
-      <div className="pt-8">
-      <button className="absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10">Reveal Answer</button>
-      <div className="card bg-gray-800 rounded-md p-4 blur-xl">
+      <div className="pt-8 pl-12 pr-12">
+      <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
+      <div className={revealClass}>
       <p className="text-xl max-w-full">
-        There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
+        As demonstarted above, If you know the rabbit's starting position is even you can start guessing holes from an even position and you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through the holes all the holes from hole 1. If you don't find the rabbit, then the rabbit is in an odd numbered hole, iterate through all holes again starting from hole 0, you are guranteed to find the rabbit.
+      </p>
+      <p className="text-sm pt-4">
+        Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts you just have to check both evens and odds in the worst case scenario.
       </p>
       </div>
       </div>
