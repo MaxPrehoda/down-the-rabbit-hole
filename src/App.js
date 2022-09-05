@@ -11,9 +11,9 @@ function App() {
             Made with&nbsp;
             <span role="img" aria-label="heart">
             <svg xmlns="http://www.w3.org/2000/svg" fill="#6366f1
-" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6366f1
-" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#6366f1
+" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 </svg>
 
             </span>&nbsp;
@@ -84,7 +84,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="flex justify-center ml-4 mr-4"><span className="bg-gray-900 p-3 pt-8 rounded-md flex flex-col sm:flex-row gap-3 md:gap-10">
-        <RabbitConfig className="pt- mt-0" parentCallback={this.rabbitConfigHandleCallback} />
+        <RabbitConfig className="pt- mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
         <StartStopButton
           className="pt- mt-0"
           parentCallback={this.startStopButtonHandleCallback}
@@ -180,12 +180,15 @@ class RabbitConfig extends React.Component {
 
   onChangeValue(event) {
     this.props.parentCallback(event.target.value);
+    console.log(event.target.value,this.props.rabbitPos)
   }
 
   render() {
-    return (
+    let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
+    return(
       <div>
-        🐰
+        <div className="relative">
+        🐰 {this.props.rabbitPos}&nbsp;<span className="text-sm pr-4">{even_odd}</span>
         <input
           className="mb-6 text-black rounded-sm drop-shadow-lg"
           type="range"
@@ -194,6 +197,7 @@ class RabbitConfig extends React.Component {
           value={this.props.rabbitPos}
           onChange={this.onChangeValue}
         />
+        </div>
       </div>
     );
   }
@@ -211,7 +215,7 @@ class StartStopButton extends React.Component {
   render() {
     return (
       <div className="mb-6 space-x-6" onClick={this.onTrigger}>
-        <button type="button" className="bg-indigo-500 rounded-md p-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="w-6 h-6">
+        <button type="button" className="bg-indigo-500 rounded-md p-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
   <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
 </svg>
 </button>
