@@ -3,15 +3,18 @@
 @tailwind utilities;
 
 
-/* GLOBAL SECTION CLASSES*/
+/* GLOBAL SECTION CLASSES
+aka
+"section" classes and things I didn't know how to Tailwind :P
+*/
 
 body {
-  background-color: #0e121a;
+  background-color: #121212;
 }
 
 .App {
   text-align: center;
-  background-color: #0e121a;
+  background-color: #121212;
 }
 
 .App-logo {
@@ -27,7 +30,7 @@ body {
 }
 
 .App-header {
-  background-color: #0e131b;
+  background-color: #121212;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -53,6 +56,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -62,7 +66,7 @@ body {
   background-color: #4f46e5;
   padding: 4px;
   border-radius: 6px;
-  
+
 }
 
 input[type="radio"] {
@@ -87,14 +91,14 @@ input[type="radio"] {
   margin: 0;
   font: inherit;
   color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
+  width: 1em;
+  height: 1em;
   border: 0.15em solid currentColor;
   border-radius: 50%;
   transform: translateY(+0.275em);
 }
 
-.form-control + .form-control {
+.form-control+.form-control {
   margin-top: 1em;
 }
 

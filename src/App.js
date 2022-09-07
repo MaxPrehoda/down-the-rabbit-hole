@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 
+
 function App() {
   return (
     <div className="App">
@@ -10,35 +11,31 @@ function App() {
           <p className="relative text-base max-h-[12px] overflow-none mt-1 pb-1 flex sm:pl-0 md:pl-8 lg:pl-16">
             Made with&nbsp;
             <span role="img" aria-label="heart">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="#6366f1
+              <svg xmlns="http://www.w3.org/2000/svg" fill="#6366f1
 " viewBox="0 0 24 24" strokeWidth="1.5" stroke="#6366f1
 " className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-</svg>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+              </svg>
 
             </span>&nbsp;
-            by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-gray-900 p-1 rounded-md">Maxwell Prehoda</span></a>
+            by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-surface-2 p-1 rounded-md">Maxwell Prehoda</span></a>
           </p>
         </div>
-        <div className="card bg-gray-900 rounded-md p-4 pt-6 ml-5 mr-5 mt-24 md:mt-28 lg:mt-18">
-        <p className="mb-8 text-2xl top-0">
-          When browsing coding videos on Youtube I came across a tricky coding
-          interview question:
-        </p>
-        <p className="text-xl mb-8 max-w-fit">
-          There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
-          one of the holes. You can only look in one hole at a time, and every
-          time you look in a hole, the rabbit jumps to either adjacent hole.
-        </p>
+        <div className="card bg-surface-2 rounded-md p-4 pt-6 ml-12 mr-12 mt-24 md:mt-28 lg:mt-18">
+          <p className="mb-8 text-2xl top-0">
+            There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
+            one of the holes. You can only look in one hole at a time, and every
+            time you look in a hole, the rabbit jumps to either adjacent hole.
+          </p>
         </div>
-        <div className="card bg-gray-900 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-5 mr-5">
-        <p className="text-3xl mb-6 mt-6">How can we find the rabbit without knowing it's initial position?</p>
+        <div className="card bg-surface-2 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-12 mr-12">
+          <p className="text-3xl mb-6 mt-6">How can we find the rabbit without knowing it's initial position?</p>
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
           Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the rabbit being found and the indexes of both initial positions?
         </p>
-        <Answer/>
+        <Answer />
       </header>
     </div>
   );
@@ -83,13 +80,12 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="flex justify-center ml-4 mr-4"><span className="bg-gray-900 p-3 pt-8 rounded-md flex flex-col sm:flex-row gap-3 md:gap-10">
-        <RabbitConfig className="pt- mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
-        <StartStopButton
-          className="pt- mt-0"
-          parentCallback={this.startStopButtonHandleCallback}
-        />
-        <StartConfig className="pt- mt-0" parentCallback={this.startConfigHandleCallback} /></span>
+        <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col sm:flex-row gap-3 md:gap-10">
+          <RabbitConfig className="pt- mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
+          <StartConfig className="pt- mt-0" parentCallback={this.startConfigHandleCallback} /><StartStopButton
+            className="pt- mt-0"
+            parentCallback={this.startStopButtonHandleCallback}
+          /></span>
         </div>
         <div className="game-board mt-4 mb-4 pl-6 pr-6">
           <Board
@@ -162,10 +158,12 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="space-x-5 flex gap-1" onChange={this.onChangeValue}>
-        🔍 
-        <input className="m" type="radio" value="0" name="startPos" />odd
-        <input type="radio" value="1" name="startPos"/>even
+      <div className="card bg-surface-3 pl-3 pr-3 pt-4 rounded-md">
+        <div className="space-x-5 flex gap-2 text-3xl pt-2" onChange={this.onChangeValue}>
+          🔍
+          <input className="" type="radio" value="0" name="startPos" />odd
+          <input type="radio" value="1" name="startPos" />even
+        </div>
       </div>
     );
   }
@@ -180,28 +178,27 @@ class RabbitConfig extends React.Component {
 
   onChangeValue(event) {
     this.props.parentCallback(event.target.value);
-    console.log(event.target.value,this.props.rabbitPos)
   }
 
   render() {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
-    return(
-      <div>
-        <div className="relative">
-        🐰 {this.props.rabbitPos}&nbsp;<span className="text-sm pr-4">{even_odd}</span>
-        <input
-          className="mb-6 text-black rounded-sm drop-shadow-lg"
-          type="range"
-          min="0"
-          max="24"
-          value={this.props.rabbitPos}
-          onChange={this.onChangeValue}
-        />
+    return (
+      <div className="card rounded-md bg-surface-3 p-2 pt-4">
+        <div className="relative flex"><div className="w-[45px]">🐰</div><div className="w-[50px] bg-surface rounded-lg pl-1.5 pr-0.5 -pt-6"> {this.props.rabbitPos}&nbsp;
+        </div><input
+            className="text-black rounded-sm drop-shadow-lg ml-2"
+            type="range"
+            min="0"
+            max="24"
+            value={this.props.rabbitPos}
+            onChange={this.onChangeValue}
+          /><div className="text-sm w-[100px] pt-2.5 ml-2">{even_odd}</div>
         </div>
       </div>
     );
   }
 }
+
 
 class StartStopButton extends React.Component {
   constructor(props) {
@@ -214,11 +211,13 @@ class StartStopButton extends React.Component {
 
   render() {
     return (
-      <div className="mb-6 space-x-6" onClick={this.onTrigger}>
-        <button type="button" className="bg-indigo-500 rounded-md p-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
-  <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-</svg>
-</button>
+      <div className="card bg-surface-3 pl-6 pr-6 pt-4 rounded-md">
+        <div className="mb-6 space-x-6" onClick={this.onTrigger}>
+          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
+            <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+          </svg>
+          </button>
+        </div>
       </div>
     );
   }
@@ -236,18 +235,18 @@ class Answer extends React.Component {
   };
 
   render() {
-    let revealClass = this.state.clicked ? 'card bg-gray-900 rounded-md p-4' : 'card bg-gray-900 rounded-md p-4 blur-xl';
-    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText';
+    let revealClass = this.state.clicked ? 'card bg-surface-2 rounded-md p-4' : 'card bg-surface-2 rounded-md p-4 blur-xl';
+    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText mt-20';
     return (
       <div className="pt-8 pl-12 pr-12">
-      <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
-      <div className={revealClass}>
-      <p className="text-xl max-w-full">
-      As you might have discovered from the demonstratation above, if you know the rabbit's starting position is even you should start guessing holes from an even position as you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through all the holes from hole 1 (even). If you don't find the rabbit, then the rabbit is in an odd-numbered hole, iterate through all holes again starting from hole 0 (odd), and you are guaranteed to find the rabbit.      </p>
-      <p className="text-sm pt-4">
-        Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts you just have to check both evens and odds in the worst case scenario.
-      </p>
-      </div>
+        <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
+        <div className={revealClass}>
+          <p className="text-xl max-w-full">
+            As you might have discovered from the demonstratation above, if you know the rabbit's starting position is even you should start guessing holes from an even position as you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through all the holes from hole 1 (even). If you don't find the rabbit, then the rabbit is in an odd-numbered hole, iterate through all holes again starting from hole 0 (odd), and you are guaranteed to find the rabbit.      </p>
+          <p className="text-sm pt-4">
+            Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts you just have to check both evens and odds in the worst case scenario.
+          </p>
+        </div>
       </div>
     );
   }
