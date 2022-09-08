@@ -38,7 +38,7 @@ function App() {
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
-          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the parity of both initial positions and finding the rabbit? How does this help us find the rabbit?
+          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the parity of both initial positions and finding the rabbit? How does this help us find the rabbit when we don't choose it's initial position?
         </p>
         <Answer />
       </header>
