@@ -85,10 +85,10 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 lg:flex-row gap-3 md:gap-10">
-          <RabbitConfig className="pt- mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
-          <StartConfig className="pt- mt-0" parentCallback={this.startConfigHandleCallback} /><StartStopButton
-            className="pt- mt-0"
+        <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 gap-8 lg:flex-row lg:gap-6 md:gap-10">
+          <RabbitConfig className=" mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
+          <StartConfig className=" mt-0" parentCallback={this.startConfigHandleCallback} /><StartStopButton
+            className=" mt-0"
             parentCallback={this.startStopButtonHandleCallback}
           /></span>
         </div>
@@ -189,7 +189,7 @@ class RabbitConfig extends React.Component {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
       <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto">
-        <div className="relative flex"><div className="w-[40px] pt-3 pb-3 pl-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
+        <div className="relative flex"><div className="w-[40px] pt-6 lg:pt-3 lg:pb-3 pl-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-6 lg:pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
