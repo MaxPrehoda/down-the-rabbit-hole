@@ -21,7 +21,7 @@ function App() {
             by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-surface-2 p-1 rounded-md">Maxwell Prehoda</span></a>
           </p>
         </div>
-        <div className="card bg-surface-2 rounded-md p-4 pt-6 ml-18 mr-18 mt-24 md:mt-28 lg:mt-18">
+        <div className="card bg-surface-2 rounded-md p-4 pt-6 ml-12 mr-12 mt-24 md:mt-28 lg:mt-18">
           <p className="mb-2 text-2xl top-0">
             There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
             one of the holes. You can only look in one hole at a time, and every
@@ -31,10 +31,10 @@ function App() {
         <div className="card bg-surface-2 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-12 mr-12">
           <p className="text-3xl mb-6 mt-6 pt-3 text-indigo-500">How can we find the rabbit without knowing it's initial position?</p>
         </div>
-        <div className="flex flex-col md:flex-row relative">
-          <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
-          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
-          <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
+        <div className="flex flex-col lg:flex-row relative ml-12 mr-12">
+          <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-8 lg:mb-4 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
+          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-8 lg:mb-4 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
+          <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-2 lg:mb-4 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
@@ -85,7 +85,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
-        <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col sm:flex-row gap-3 md:gap-10">
+        <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 lg:flex-row gap-3 md:gap-10">
           <RabbitConfig className="pt- mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
           <StartConfig className="pt- mt-0" parentCallback={this.startConfigHandleCallback} /><StartStopButton
             className="pt- mt-0"
@@ -163,8 +163,8 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="card step2 bg-surface-2 pl-3 pr-3 pt-2 pb-2 rounded-md">
-        <div className="space-x-5 flex gap-2 text-3xl pt-4 pb-4" onChange={this.onChangeValue}>
+      <div className="card step2 bg-surface-2 pl-3 pr-3 pt-8 pb-8 rounded-md m-auto">
+        <div className="space-x-5 flex gap-2.5 text-2xl" onChange={this.onChangeValue}>
           🔍
           <input className="" type="radio" value="0" name="startPos" />odd
           <input type="radio" value="1" name="startPos" />even
@@ -188,8 +188,8 @@ class RabbitConfig extends React.Component {
   render() {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
-      <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2">
-        <div className="relative flex"><div className="w-[40px] pt-3 pb-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
+      <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto">
+        <div className="relative flex"><div className="w-[40px] pt-3 pb-3 pl-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
@@ -216,9 +216,9 @@ class StartStopButton extends React.Component {
 
   render() {
     return (
-      <div className="card step3 bg-surface-3 pl-6 pr-6 pt-4 rounded-md">
-        <div className="mb-6 space-x-6" onClick={this.onTrigger}>
-          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
+      <div className="card step3 bg-surface-2 pl-6 pr-6 pt-7 pb-4 rounded-md w-[100px] m-auto lg:w-full lg:m-0">
+        <div className="space-x-6" onClick={this.onTrigger}>
+          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5 mb-3 lg:mb-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
             <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
           </svg>
           </button>
