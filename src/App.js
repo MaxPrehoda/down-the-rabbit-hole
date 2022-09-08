@@ -29,11 +29,11 @@ function App() {
           </p>
         </div>
         <div className="card bg-surface-2 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-12 mr-12">
-          <p className="text-3xl mb-6 mt-6 pt-3 text-indigo-500">How can we find the rabbit without knowing it's initial position?</p>
+          <p className="text-3xl mb-6 mt-6 pt-3 text-indigo-500">How can we find the rabbit without knowing its initial position?</p>
         </div>
         <div className="flex flex-col lg:flex-row relative ml-12 mr-12">
           <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-8 lg:mb-4 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
-          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-8 lg:mb-4 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
+          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-8 lg:mb-4 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to start looking for the rabbit from below.</span></div>
           <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 md:ml-1 md:mr-1 xl:ml-5 xl:mr-5 mb-2 lg:mb-4 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
         </div>
         <Game />
@@ -247,9 +247,9 @@ class Answer extends React.Component {
         <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
         <div className={revealClass}>
           <p className="text-xl max-w-full">
-            As you might have discovered from the demonstratation above, if you know the rabbit's starting position is even you should start guessing holes from an even position as you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through all the holes from hole 1 (even). If you don't find the rabbit, then the rabbit is in an odd-numbered hole, iterate through all holes again starting from hole 0 (odd), and you are guaranteed to find the rabbit.      </p>
+            As you might have discovered from the demonstration above, if you know the rabbit's starting position is even you should start guessing holes from an even position as you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through all the holes from hole 1 (even). If you don't find the rabbit, then the rabbit is in an odd-numbered hole, iterate through all holes again starting from hole 0 (odd), and you are guaranteed to find the rabbit.      </p>
           <p className="text-sm pt-4">
-            Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts, you'll just have to check both evens and odds in the worst case scenario.
+            Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero-based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts, you'll just have to check both evens and odds in the worst-case scenario.
           </p>
         </div>
       </div>
