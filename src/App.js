@@ -29,7 +29,12 @@ function App() {
           </p>
         </div>
         <div className="card bg-surface-2 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-12 mr-12">
-          <p className="text-3xl mb-6 mt-6">How can we find the rabbit without knowing it's initial position?</p>
+          <p className="text-3xl mb-6 mt-6 text-indigo-500">How can we find the rabbit without knowing it's initial position?</p>
+        </div>
+        <div className="flex flex-col md:flex-row relative">
+          <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
+          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
+          <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
@@ -56,7 +61,7 @@ class Game extends React.Component {
     let interval = setInterval(() => {
       let newRabbitPos = Math.min(
         Math.max(this.state.rabbitPos + (Math.random() > 0.5 ? 1 : -1), 0),
-        25
+        29
       );
       let newStartPos = this.state.startPos + 1;
       this.setState({ rabbitPos: newRabbitPos, startPos: newStartPos });
@@ -117,7 +122,7 @@ function Board(props) {
   } */
 
   let status;
-  let squares = Array(25)
+  let squares = Array(30)
     .fill(null)
     .map((val, idx) => {
       if (idx === props.lookPos & idx > props.rabbitPos) return "👎";
@@ -135,7 +140,7 @@ function Board(props) {
   }
   return (
     <div>
-      <div className="status">{status}</div>
+      <div className="status text-indigo-500 border-4 border-surface-4 rounded-md ml-28 mr-28 sm:ml-44 sm:mr-44 2xl:ml-96 2xl:mr-96 mb-12">{status}</div>
       <div className="board-row mt-2">
         {squares.map((val, idx) => (
           <Square key={idx} type={val}></Square>
@@ -158,8 +163,8 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="card bg-surface-3 pl-3 pr-3 pt-4 rounded-md">
-        <div className="space-x-5 flex gap-2 text-3xl pt-2" onChange={this.onChangeValue}>
+      <div className="card step2 bg-surface-3 pl-3 pr-3 pt-2 pb-2 rounded-md">
+        <div className="space-x-5 flex gap-2 text-3xl pt-4 pb-4" onChange={this.onChangeValue}>
           🔍
           <input className="" type="radio" value="0" name="startPos" />odd
           <input type="radio" value="1" name="startPos" />even
@@ -183,16 +188,16 @@ class RabbitConfig extends React.Component {
   render() {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
-      <div className="card rounded-md bg-surface-3 p-2 pt-4">
-        <div className="relative flex"><div className="w-[45px]">🐰</div><div className="w-[50px] bg-surface rounded-lg pl-1.5 pr-0.5 -pt-6"> {this.props.rabbitPos}&nbsp;
+      <div className="card step1 rounded-md bg-surface-3 pb-2 pt-2">
+        <div className="relative flex"><div className="w-[45px] pt-3 pb-3">🐰</div><div className="w-[50px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
             min="0"
-            max="24"
+            max="29"
             value={this.props.rabbitPos}
             onChange={this.onChangeValue}
-          /><div className="text-sm w-[100px] pt-2.5 ml-2">{even_odd}</div>
+          /><div className="text-sm w-[105px] ml-2 pt-8 pb-8">{even_odd}</div>
         </div>
       </div>
     );
@@ -211,7 +216,7 @@ class StartStopButton extends React.Component {
 
   render() {
     return (
-      <div className="card bg-surface-3 pl-6 pr-6 pt-4 rounded-md">
+      <div className="card step3 bg-surface-3 pl-6 pr-6 pt-4 rounded-md">
         <div className="mb-6 space-x-6" onClick={this.onTrigger}>
           <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
             <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
