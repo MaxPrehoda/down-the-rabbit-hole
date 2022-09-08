@@ -21,24 +21,24 @@ function App() {
             by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-surface-2 p-1 rounded-md">Maxwell Prehoda</span></a>
           </p>
         </div>
-        <div className="card bg-surface-2 rounded-md p-4 pt-6 ml-12 mr-12 mt-24 md:mt-28 lg:mt-18">
-          <p className="mb-8 text-2xl top-0">
+        <div className="card bg-surface-2 rounded-md p-4 pt-6 ml-18 mr-18 mt-24 md:mt-28 lg:mt-18">
+          <p className="mb-2 text-2xl top-0">
             There are 100 holes 🕳️ in a line, and there's a rabbit 🐰 hiding in
             one of the holes. You can only look in one hole at a time, and every
             time you look in a hole, the rabbit jumps to either adjacent hole.
           </p>
         </div>
         <div className="card bg-surface-2 rounded-md -mt-6 pl-6 pr-6 mb-12 ml-12 mr-12">
-          <p className="text-3xl mb-6 mt-6 text-indigo-500">How can we find the rabbit without knowing it's initial position?</p>
+          <p className="text-3xl mb-6 mt-6 pt-3 text-indigo-500">How can we find the rabbit without knowing it's initial position?</p>
         </div>
         <div className="flex flex-col md:flex-row relative">
-          <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
-          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
-          <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-12 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
+          <div className="card step1 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 1.</span><span className="w-[300px] text-sm">Select an initial hole for the rabbit to hide in using the slider below.</span></div>
+          <div className="card step2 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 2.</span><span className="w-[300px] text-sm">Select an odd or even initial hole to sart looking for the rabbit from below.</span></div>
+          <div className="card step3 bg-surface-2 rounded-md p-4 pt-0 ml-12 mr-12 mb-4 flex flex-col"><span className="text-md">Step 3.</span><span className="w-[300px] text-sm">Press start below to begin guessing holes sequentially.</span></div>
         </div>
         <Game />
         <p className="text-xl max-w-[75ch] mt-8">
-          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the rabbit being found and the indexes of both initial positions?
+          Try out both initial looking 🔍 positions and a few different initial rabbit 🐰 positions. Do you see a correlation between the parity of both initial positions and finding the rabbit? How does this help us find the rabbit?
         </p>
         <Answer />
       </header>
@@ -163,7 +163,7 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="card step2 bg-surface-3 pl-3 pr-3 pt-2 pb-2 rounded-md">
+      <div className="card step2 bg-surface-2 pl-3 pr-3 pt-2 pb-2 rounded-md">
         <div className="space-x-5 flex gap-2 text-3xl pt-4 pb-4" onChange={this.onChangeValue}>
           🔍
           <input className="" type="radio" value="0" name="startPos" />odd
@@ -188,8 +188,8 @@ class RabbitConfig extends React.Component {
   render() {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
-      <div className="card step1 rounded-md bg-surface-3 pb-2 pt-2">
-        <div className="relative flex"><div className="w-[45px] pt-3 pb-3">🐰</div><div className="w-[50px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
+      <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2">
+        <div className="relative flex"><div className="w-[40px] pt-3 pb-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
@@ -197,7 +197,7 @@ class RabbitConfig extends React.Component {
             max="29"
             value={this.props.rabbitPos}
             onChange={this.onChangeValue}
-          /><div className="text-sm w-[105px] ml-2 pt-8 pb-8">{even_odd}</div>
+          /><div className="text-sm w-[135px] ml-2 pt-8 pb-8">{even_odd}</div>
         </div>
       </div>
     );
@@ -243,13 +243,13 @@ class Answer extends React.Component {
     let revealClass = this.state.clicked ? 'card bg-surface-2 rounded-md p-4' : 'card bg-surface-2 rounded-md p-4 blur-xl';
     let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText mt-20';
     return (
-      <div className="pt-8 pl-12 pr-12">
+      <div className="pt-8 pl-12 pr-12 pb-10">
         <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
         <div className={revealClass}>
           <p className="text-xl max-w-full">
             As you might have discovered from the demonstratation above, if you know the rabbit's starting position is even you should start guessing holes from an even position as you will always find the rabbit on the first pass through. However, if you don't know where the rabbit is, look through all the holes from hole 1 (even). If you don't find the rabbit, then the rabbit is in an odd-numbered hole, iterate through all holes again starting from hole 0 (odd), and you are guaranteed to find the rabbit.      </p>
           <p className="text-sm pt-4">
-            Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts you just have to check both evens and odds in the worst case scenario.
+            Example: You know the Rabbit starts at position 7, you can always find the rabbit by starting your look position at 1, and incrementing your guess by 1 each time. This is because position 7 in a zero based index is even and 1 is as well. You can use this same logic to solve the problem if you don't know where the rabbit starts, you'll just have to check both evens and odds in the worst case scenario.
           </p>
         </div>
       </div>
