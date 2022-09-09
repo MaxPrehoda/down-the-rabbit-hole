@@ -94,7 +94,7 @@ class Game extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div className="game  w-[300px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px]">
+      <div className="game w-[360px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px]">
         <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 gap-8 lg:flex-row lg:gap-6 md:gap-10">
           <RabbitConfig className="mt-0" disabledConfigs={this.state.disabledConfigs} rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
           <StartConfig className="mt-0" parentCallback={this.startConfigHandleCallback} disabledConfigs={this.state.disabledConfigs} lookPos={this.state.startPos} /><StartStopButton
