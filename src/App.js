@@ -1,5 +1,6 @@
 import "./App.css";
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
 " className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
               </svg>
-
             </span>&nbsp;
             by<a href="https://maxprehoda.info/" className="portfolio-link">&nbsp; <span className="bg-surface-2 p-1 rounded-md">Maxwell Prehoda</span></a>
           </p>
@@ -45,6 +45,8 @@ function App() {
     </div>
   );
 }
+
+
 
 class Game extends React.Component {
   constructor(props) {
@@ -92,7 +94,7 @@ class Game extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <div className="game">
+      <div className="game  w-[300px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px]">
         <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 gap-8 lg:flex-row lg:gap-6 md:gap-10">
           <RabbitConfig className="mt-0" disabledConfigs={this.state.disabledConfigs} rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
           <StartConfig className="mt-0" parentCallback={this.startConfigHandleCallback} disabledConfigs={this.state.disabledConfigs} lookPos={this.state.startPos} /><StartStopButton
@@ -100,7 +102,7 @@ class Game extends React.Component {
             parentCallback={this.startStopButtonHandleCallback} disabledConfigs={this.state.disabledConfigs}
           /></span>
         </div>
-        <div className="game-board mt-4 mb-4 pl-6 pr-6">
+        <div className="game-board mt-4 mb-4">
           <Board
             lookPos={this.state.startPos}
             rabbitPos={this.state.rabbitPos}
@@ -149,7 +151,7 @@ function Board(props) {
   return (
     <div>
       <div className="status text-indigo-500 border-4 border-surface-4 rounded-md ml-28 mr-28 sm:ml-44 sm:mr-44 2xl:ml-96 2xl:mr-96 mb-12">{status}</div>
-      <div className="board-row mt-2 w-[350px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px] m-auto">
+      <div className="board-row mt-2 w-[300px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px] m-auto">
         {squares.map((val, idx) => (
           <Square key={idx} type={val}></Square>
         ))}
