@@ -52,6 +52,7 @@ class Game extends React.Component {
     this.state = {
       rabbitPos: 5,
       startPos: 1,
+      disabledConfigs: false
     };
     this.startStopButtonHandleCallback =
       this.startStopButtonHandleCallback.bind(this);
@@ -90,10 +91,10 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 gap-8 lg:flex-row lg:gap-6 md:gap-10">
-          <RabbitConfig className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0 disabled'} rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
-          <StartConfig className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0 disabled'} parentCallback={this.startConfigHandleCallback} /><StartStopButton
-            className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0'}
-            parentCallback={this.startStopButtonHandleCallback}
+          <RabbitConfig className="mt-0" disabledConfigs={this.state.disabledConfigs} rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
+          <StartConfig className="mt-0" parentCallback={this.startConfigHandleCallback} disabledConfigs={this.state.disabledConfigs} lookPos={this.state.startPos} /><StartStopButton
+            className='mt-0'
+            parentCallback={this.startStopButtonHandleCallback} disabledConfigs={this.state.disabledConfigs}
           /></span>
         </div>
         <div className="game-board mt-4 mb-4 pl-6 pr-6">
@@ -167,13 +168,12 @@ class StartConfig extends React.Component {
 
   render() {
     return (
-      <div className="card step2 bg-surface-2 pl-3 pr-3 pt-8 pb-8 rounded-md m-auto">
+      <div className={this.props.disabledConfigs === false ? "card step2 bg-surface-2 pl-3 pr-3 pt-8 pb-8 rounded-md m-auto" : "card step2 bg-surface-2 pl-3 pr-3 pt-8 pb-8 rounded-md m-auto disabled"}>
         <div className="space-x-5 flex gap-2.5 text-2xl" onChange={this.onChangeValue}>
-          🔍
-          <input className="" type="radio" value="0" name="startPos" />odd
-          <input type="radio" value="1" name="startPos" />even
+          <input disabled={this.props.disabledConfigs} className="" type="radio" value="0" name="startPos" />odd
+          <input disabled={this.props.disabledConfigs} type="radio" value="1" name="startPos" />even
         </div>
-      </div>
+      </div >
     );
   }
 }
@@ -192,16 +192,17 @@ class RabbitConfig extends React.Component {
   render() {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
-      <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto">
-        <div className="relative flex"><div className="w-[40px] pt-6 lg:pt-3 lg:pb-3 lg:pl-3">🐰</div><div className="w-[35px] lg:w-[60px] bg-surface rounded-lg lg:pl-5 lg:pr-0.5 pt-6 lg:pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
+      <div className={this.props.disabledConfigs === false ? "card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto" : "card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto disabled"}>
+        <div className="relative flex"><div className="w-[40px] pt-6 lg:pt-3 lg:pb-3 lg:pl-3">🐰</div><div className="w-[35px] lg:w-[60px] bg-surface rounded-lg lg:pl-5 lg:pr-0.5 pt-6 lg:pt-4 pb-4">{this.props.disabledConfigs ? "0" : this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
             min="0"
             max="29"
-            value={this.props.rabbitPos}
+            value={this.props.disabledConfigs ? "0" : this.props.rabbitPos}
             onChange={this.onChangeValue}
-          /><div className="text-sm w-[135px] lg:ml-2 pt-8 pb-8">{even_odd}</div>
+            disabled={this.props.disabledConfigs}
+          /><div className="text-sm w-[135px] lg:ml-2 pt-8 pb-8">{this.props.disabledConfigs ? "process running" : even_odd}</div>
         </div>
       </div>
     );
@@ -220,9 +221,9 @@ class StartStopButton extends React.Component {
 
   render() {
     return (
-      <div className="card step3 bg-surface-2 pl-6 pr-6 pt-7 pb-4 rounded-md w-[100px] m-auto lg:w-full lg:m-0">
+      <div className={this.props.disabledConfigs === false ? "card step3 bg-surface-2 pl-6 pr-6 pt-7 pb-4 rounded-md w-[100px] m-auto lg:w-full lg:m-0" : "card step3 bg-surface-2 pl-6 pr-6 pt-7 pb-4 rounded-md w-[100px] m-auto lg:w-full lg:m-0 disabled"}>
         <div className="space-x-6" onClick={this.onTrigger}>
-          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5 mb-3 lg:mb-0 border-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
+          <button type="button" disabled={this.props.disabledConfigs} className="bg-indigo-500 rounded-md p-2 pl-2.5 mb-3 lg:mb-0 border-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
             <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
           </svg>
           </button>
