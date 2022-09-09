@@ -48,20 +48,6 @@ body {
   margin: 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .portfolio-link :hover {
   background-color: #4f46e5;
   padding: 4px;

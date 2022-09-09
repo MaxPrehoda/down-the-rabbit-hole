@@ -189,7 +189,7 @@ class RabbitConfig extends React.Component {
     let even_odd = this.props.rabbitPos % 2 !== 0 ? "(0 based even)" : "(0 based odd)"
     return (
       <div className="card step1 rounded-md bg-surface-2 pb-2 pt-2 m-auto">
-        <div className="relative flex"><div className="w-[40px] pt-6 lg:pt-3 lg:pb-3 pl-3">🐰</div><div className="w-[75px] bg-surface rounded-lg pl-1.5 pr-0.5 pt-6 lg:pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
+        <div className="relative flex"><div className="w-[40px] pt-6 lg:pt-3 lg:pb-3 lg:pl-3">🐰</div><div className="w-[35px] lg:w-[60px] bg-surface rounded-lg lg:pl-5 lg:pr-0.5 pt-6 lg:pt-4 pb-4"> {this.props.rabbitPos}&nbsp;
         </div><input
             className="text-black rounded-sm drop-shadow-lg ml-2"
             type="range"
@@ -197,7 +197,7 @@ class RabbitConfig extends React.Component {
             max="29"
             value={this.props.rabbitPos}
             onChange={this.onChangeValue}
-          /><div className="text-sm w-[135px] ml-2 pt-8 pb-8">{even_odd}</div>
+          /><div className="text-sm w-[135px] lg:ml-2 pt-8 pb-8">{even_odd}</div>
         </div>
       </div>
     );
