@@ -65,6 +65,9 @@ class Game extends React.Component {
         Math.max(this.state.rabbitPos + (Math.random() > 0.5 ? 1 : -1), 0),
         29
       );
+      if (this.state.rabbitPos === 29) {
+        newRabbitPos = 28;
+      }
       let newStartPos = this.state.startPos + 1;
       this.setState({ rabbitPos: newRabbitPos, startPos: newStartPos });
       if (newRabbitPos === newStartPos) {
