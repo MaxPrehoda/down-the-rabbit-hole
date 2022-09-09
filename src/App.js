@@ -218,7 +218,7 @@ class StartStopButton extends React.Component {
     return (
       <div className="card step3 bg-surface-2 pl-6 pr-6 pt-7 pb-4 rounded-md w-[100px] m-auto lg:w-full lg:m-0">
         <div className="space-x-6" onClick={this.onTrigger}>
-          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5 mb-3 lg:mb-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
+          <button type="button" className="bg-indigo-500 rounded-md p-2 pl-2.5 mb-3 lg:mb-0 border-0"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.75" stroke="currentColor" className="w-6 h-6">
             <path strokeLineCap="round" strokeLineJoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
           </svg>
           </button>
@@ -241,7 +241,7 @@ class Answer extends React.Component {
 
   render() {
     let revealClass = this.state.clicked ? 'card bg-surface-2 rounded-md p-4' : 'card bg-surface-2 rounded-md p-4 blur-xl';
-    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText mt-20';
+    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText mt-20 border-0';
     return (
       <div className="pt-8 pl-12 pr-12 pb-10">
         <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
