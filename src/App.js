@@ -58,6 +58,7 @@ class Game extends React.Component {
   }
 
   startStopButtonHandleCallback = (childData) => {
+    this.setState({ disabledConfigs: true });
     let interval = setInterval(() => {
       let newRabbitPos = Math.min(
         Math.max(this.state.rabbitPos + (Math.random() > 0.5 ? 1 : -1), 0),
@@ -67,9 +68,11 @@ class Game extends React.Component {
       this.setState({ rabbitPos: newRabbitPos, startPos: newStartPos });
       if (newRabbitPos === newStartPos) {
         clearInterval(interval);
+        this.setState({ disabledConfigs: false });
       };
       if (newStartPos > newRabbitPos) {
         clearInterval(interval);
+        this.setState({ disabledConfigs: false });
       }
     }, 1000);
   };
@@ -83,12 +86,13 @@ class Game extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="game">
         <div className="flex justify-center ml-4 mr-4"><span className="bg-transparent p-3 pt-8 pb-8 rounded-md flex flex-col ml-8 mr-8 gap-8 lg:flex-row lg:gap-6 md:gap-10">
-          <RabbitConfig className=" mt-0" rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
-          <StartConfig className=" mt-0" parentCallback={this.startConfigHandleCallback} /><StartStopButton
-            className=" mt-0"
+          <RabbitConfig className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0 disabled'} rabbitPos={this.state.rabbitPos} parentCallback={this.rabbitConfigHandleCallback} />
+          <StartConfig className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0 disabled'} parentCallback={this.startConfigHandleCallback} /><StartStopButton
+            className={this.state.disabledConfigs === true ? 'mt-0 disabled' : 'mt-0'}
             parentCallback={this.startStopButtonHandleCallback}
           /></span>
         </div>
@@ -141,7 +145,7 @@ function Board(props) {
   return (
     <div>
       <div className="status text-indigo-500 border-4 border-surface-4 rounded-md ml-28 mr-28 sm:ml-44 sm:mr-44 2xl:ml-96 2xl:mr-96 mb-12">{status}</div>
-      <div className="board-row mt-2">
+      <div className="board-row mt-2 w-[350px] sm:w-[620px] md:w-[740px] lg:w-[950px] xl:w-[1200px] m-auto">
         {squares.map((val, idx) => (
           <Square key={idx} type={val}></Square>
         ))}
@@ -241,7 +245,7 @@ class Answer extends React.Component {
 
   render() {
     let revealClass = this.state.clicked ? 'card bg-surface-2 rounded-md p-4' : 'card bg-surface-2 rounded-md p-4 blur-xl';
-    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-3 pr-3 text-md -ml-28 z-10 customText mt-20 border-0';
+    let hiddenClass = this.state.clicked ? 'hidden' : 'absolute bg-indigo-500 rounded-md pl-6 pr-6 text-md -ml-36 sm:-ml-32 z-10 customText mt-20 border-0';
     return (
       <div className="pt-8 pl-12 pr-12 pb-10">
         <button className={hiddenClass} onClick={this.handleClick}>Reveal Answer</button>
